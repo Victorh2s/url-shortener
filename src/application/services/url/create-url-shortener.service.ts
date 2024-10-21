@@ -19,7 +19,6 @@ export class CreateUrlShortenerService {
             userId
         })
 
-
         return {
             shortenedUrl: `http://localhost:3000/url/r/${newShortenedUrl.shortenedUrl}`
         }

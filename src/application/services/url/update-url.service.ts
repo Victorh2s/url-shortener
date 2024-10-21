@@ -10,7 +10,6 @@ export class UpdateUrlService {
 
     async execute({userId, shortenedUrl, originalUrl}: IUpdateUrl) {
 
-
         await this.urlRepository.updateUrl({
             userId,
             shortenedUrl,

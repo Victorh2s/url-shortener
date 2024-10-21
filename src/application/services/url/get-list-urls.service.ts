@@ -8,10 +8,7 @@ export class GetListUrlsService {
     ) {}
 
     async execute( userId: string ) {
-        
-
         return await this.urlRepository.findManyUrls(userId)
-        
     }
  
 }
