@@ -5,6 +5,7 @@
 
 # SQLite database file
 prisma/dev.db
+prisma/test.test.db
 
 # Logs
 logs
@@ -44,6 +45,7 @@ lerna-debug.log*
 .env.test.local
 .env.production.local
 .env.local
+.env.test
 
 # temp directory
 .temp
