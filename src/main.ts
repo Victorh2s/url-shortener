@@ -8,9 +8,18 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
   .setTitle('Url-shortener')
-  .setDescription('The cats API description')
+  .setDescription(`
+&nbsp;&nbsp;&nbsp;&nbsp;A aplicação **Url-shortener** permite aos usuários:
+- Criar URLs encurtados
+- Gerenciar URLs encurtados (listar, atualizar, deletar)
+- Acompanhar o número de cliques em URLs encurtados
+- Redirecionar URLs encurtados para a URL de origem.
+
+&nbsp;&nbsp;&nbsp;&nbsp;A API possui suporte para autenticação baseada em Bearer Token, e oferece endpoints que aceitam tanto requisições autenticadas quanto não autenticadas.
+  `)
+  .setExternalDoc('Veja mais em', 'https://github.com/Victorh2s/url-shortener')
   .setVersion('1.0')
-  .addTag('cats')
+  .addBearerAuth() 
   .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);

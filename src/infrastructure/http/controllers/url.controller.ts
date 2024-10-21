@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, Redirect, Req, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Patch, Post, Put, Redirect, Req, Res } from '@nestjs/common';
 import { Request } from 'express';
 import { CreateUrlShortenerService } from 'src/application/services/url/create-url-shortener.service';
 import { UrlShortenerDto } from '../dtos/url/url-shortener.dto';
@@ -6,7 +6,9 @@ import { RedirectToOriginalUrlService } from 'src/application/services/url/redir
 import { GetListUrlsService } from 'src/application/services/url/get-list-urls.service';
 import { UpdateUrlService } from 'src/application/services/url/update-url.service';
 import { DeleteUrlService } from 'src/application/services/url/delete-url.service';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
+@ApiTags("url")
 @Controller('url')
 export class UrlController {
     constructor(
@@ -18,7 +20,9 @@ export class UrlController {
 
     ) {}
 
-    @Post('')
+    @Post('shorten')
+    @ApiOperation({ summary: 'Encurtar uma URL', description: 'Recebe uma URL de origem e retorna uma versão encurtada. O token de autenticação é opcional.' })
+    @ApiBearerAuth()
     async shortener(@Body() body: UrlShortenerDto, @Req() req: Request) {
         const { originalUrl  } = body
 
@@ -34,6 +38,7 @@ export class UrlController {
 
     
     @Get('r/:shortenedUrl')
+    @ApiOperation({ summary: 'Redirecionar uma URL encurtada', description: 'Recebe uma URL encurtada e redireciona para a URL original, contabilizando os cliques.' })
     @Redirect()
     async redirectToUrl(@Param('shortenedUrl') shortenedUrl: string) {
         const urlEntry = await this.redirectToOriginalUrlService.execute(shortenedUrl);
@@ -42,6 +47,8 @@ export class UrlController {
     }
 
     @Get('/list')
+    @ApiOperation({ summary: 'Listar URLs encurtadas', description: 'Lista todas as URLs encurtadas criadas pelo usuário autenticado, junto com a contagem de cliques.' })
+    @ApiBearerAuth()
     async getListUrls(@Req() req: Request) {
         if (!req['authUser']) {
             throw new HttpException('Acesso negado.', HttpStatus.UNAUTHORIZED);
@@ -57,7 +64,12 @@ export class UrlController {
         
     }
 
-    @Put('update/:shortenedUrl')
+    @Patch('update/:shortenedUrl')
+    @ApiOperation({ 
+        summary: 'Atualizar URL de origem', 
+        description: 'Atualiza a URL original associada a um link encurtado.'
+      })
+    @ApiBearerAuth()
     async updateUrl(@Param('shortenedUrl') shortenedUrl: string, @Req() req: Request, @Body() body: UrlShortenerDto ) {
 
         if (!req['authUser']) {
@@ -75,6 +87,11 @@ export class UrlController {
     }
 
     @Delete('delete/:shortenedUrl')
+    @ApiOperation({ 
+        summary: 'Deletar URL encurtada', 
+        description: 'Deleta um link encurtado associado ao usuário autenticado.'
+      })
+    @ApiBearerAuth()
     async deleteUrl(@Param('shortenedUrl') shortenedUrl: string, @Req() req: Request) {
 
         if (!req['authUser']) {
