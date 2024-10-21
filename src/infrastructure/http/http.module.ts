@@ -10,6 +10,7 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { RedirectToOriginalUrlService } from 'src/application/services/url/redirect-to-original-url.service';
 import { GetListUrlsService } from 'src/application/services/url/get-list-urls.service';
 import { UpdateUrlService } from 'src/application/services/url/update-url.service';
+import { DeleteUrlService } from 'src/application/services/url/delete-url.service';
 
 
 @Module({
@@ -27,6 +28,7 @@ import { UpdateUrlService } from 'src/application/services/url/update-url.servic
     RedirectToOriginalUrlService,
     GetListUrlsService,
     UpdateUrlService,
+    DeleteUrlService,
     LoggerMiddleware
   ],
 })

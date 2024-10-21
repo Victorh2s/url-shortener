@@ -5,6 +5,7 @@ import { UrlShortenerDto } from '../dtos/url/url-shortener.dto';
 import { RedirectToOriginalUrlService } from 'src/application/services/url/redirect-to-original-url.service';
 import { GetListUrlsService } from 'src/application/services/url/get-list-urls.service';
 import { UpdateUrlService } from 'src/application/services/url/update-url.service';
+import { DeleteUrlService } from 'src/application/services/url/delete-url.service';
 
 @Controller('url')
 export class UrlController {
@@ -12,7 +13,8 @@ export class UrlController {
         private readonly createUrlShortenerService: CreateUrlShortenerService,
         private readonly redirectToOriginalUrlService: RedirectToOriginalUrlService,
         private readonly getListUrlsService: GetListUrlsService,
-        private readonly updateUrlService: UpdateUrlService
+        private readonly updateUrlService: UpdateUrlService,
+        private readonly deleteUrlService: DeleteUrlService
 
     ) {}
 
@@ -72,6 +74,22 @@ export class UrlController {
         return updated
     }
 
+    @Delete('delete/:shortenedUrl')
+    async deleteUrl(@Param('shortenedUrl') shortenedUrl: string, @Req() req: Request) {
+
+        if (!req['authUser']) {
+            throw new HttpException('Acesso negado', HttpStatus.UNAUTHORIZED);
+        }
+
+        const authUser = req.authUser
+        const userId = authUser.id
+        
+
+        const deleted = await this.deleteUrlService.execute({userId, shortenedUrl})
+
+        return deleted
+    
+}
    
   
 }

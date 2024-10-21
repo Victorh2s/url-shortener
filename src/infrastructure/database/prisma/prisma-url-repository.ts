@@ -91,4 +91,30 @@ export class PrismaUrlRepository implements UrlRepository {
 
         return
     }
+
+    async deleteUrl({userId, shortenedUrl}: IDeleteUrl) {
+
+        const findUrl = await this.prisma.url.findUnique({
+            where:{
+                userId,
+                shortenedUrl,
+                deletedAt: null,
+            }
+        })
+
+        if(!findUrl) throw new HttpException('Essa URL não foi encontrada.', HttpStatus.NOT_FOUND);
+
+        await this.prisma.url.update({
+            where:{
+                userId,
+                shortenedUrl,
+                deletedAt: null,
+            },
+            data:{
+                deletedAt: new Date()
+            }
+        })
+
+        return
+    }
 }
