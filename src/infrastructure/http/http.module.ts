@@ -7,6 +7,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { UrlController } from './controllers/url.controller';
 import { CreateUrlShortenerService } from 'src/application/services/url/create-url-shortener.service';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
+import { RedirectToOriginalUrlService } from 'src/application/services/url/redirect-to-original-url.service';
 
 
 @Module({
@@ -21,6 +22,7 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
     RegisterUserService,
     AuthenticateUserService,
     CreateUrlShortenerService,
+    RedirectToOriginalUrlService,
     LoggerMiddleware
   ],
 })

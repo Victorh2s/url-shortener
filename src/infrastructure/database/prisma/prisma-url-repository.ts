@@ -18,7 +18,7 @@ export class PrismaUrlRepository implements UrlRepository {
 
         return newUrl
     }
-    
+
     async findExistingShortenedUrl(shortenedUrl: string) {
         const url = await this.prisma.url.findFirst({
             where:{
@@ -30,4 +30,28 @@ export class PrismaUrlRepository implements UrlRepository {
         return url
     }
    
+    async findUrlForRedirect(shortenedUrl: string){
+        const url = await this.prisma.url.findFirst({
+            where:{
+                shortenedUrl,
+                deletedAt: null,
+            }
+        })
+
+        if(!url) throw new HttpException('Essa URL não foi encontrada.', HttpStatus.NOT_FOUND);
+
+        await this.prisma.url.update({
+            where: {
+                shortenedUrl,
+                deletedAt: null,
+            },
+            data:{
+                clickCount: {
+                    increment: 1
+                }
+            }
+        })
+
+        return url
+    }
 }

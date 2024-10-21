@@ -43,4 +43,15 @@ export abstract class UrlRepository {
         deletedAt: Date | null;
         userId: string | null;
     } | null>
+
+    abstract findUrlForRedirect(shortenedUrl: string): Promise<{
+        id: string;
+        originalUrl: string;
+        shortenedUrl: string;
+        clickCount: number;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+        userId: string | null;
+    }>
 }

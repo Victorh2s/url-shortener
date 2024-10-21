@@ -2,12 +2,13 @@ import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, 
 import { Request } from 'express';
 import { CreateUrlShortenerService } from 'src/application/services/url/create-url-shortener.service';
 import { UrlShortenerDto } from '../dtos/url/url-shortener.dto';
+import { RedirectToOriginalUrlService } from 'src/application/services/url/redirect-to-original-url.service';
 
 @Controller('url')
 export class UrlController {
     constructor(
         private readonly createUrlShortenerService: CreateUrlShortenerService,
-        
+        private readonly redirectToOriginalUrlService: RedirectToOriginalUrlService
     ) {}
 
     @Post('')
@@ -22,6 +23,15 @@ export class UrlController {
         const userId = authUser.id
 
         return await this.createUrlShortenerService.execute({ originalUrl, userId })
+    }
+
+    
+    @Get('r/:shortenedUrl')
+    @Redirect()
+    async redirectToUrl(@Param('shortenedUrl') shortenedUrl: string) {
+        const urlEntry = await this.redirectToOriginalUrlService.execute(shortenedUrl);
+
+        return { url: urlEntry.originalUrl };
     }
 
    
