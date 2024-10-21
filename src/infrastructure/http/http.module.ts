@@ -6,6 +6,7 @@ import { AuthenticateUserService } from 'src/application/services/auth/authentic
 import { JwtModule } from '@nestjs/jwt';
 import { UrlController } from './controllers/url.controller';
 import { CreateUrlShortenerService } from 'src/application/services/url/create-url-shortener.service';
+import { LoggerMiddleware } from './middlewares/logger.middleware';
 
 
 @Module({
@@ -19,7 +20,8 @@ import { CreateUrlShortenerService } from 'src/application/services/url/create-u
   providers: [
     RegisterUserService,
     AuthenticateUserService,
-    CreateUrlShortenerService
+    CreateUrlShortenerService,
+    LoggerMiddleware
   ],
 })
 export class HttpModule {}

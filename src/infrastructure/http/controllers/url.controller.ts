@@ -14,7 +14,14 @@ export class UrlController {
     async shortener(@Body() body: UrlShortenerDto, @Req() req: Request) {
         const { originalUrl  } = body
 
-        return await this.createUrlShortenerService.execute({ originalUrl })
+        if (!req['authUser']) {
+            return await this.createUrlShortenerService.execute({ originalUrl })
+        }
+
+        const authUser = req.authUser
+        const userId = authUser.id
+
+        return await this.createUrlShortenerService.execute({ originalUrl, userId })
     }
 
    
