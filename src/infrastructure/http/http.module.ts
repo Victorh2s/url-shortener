@@ -8,6 +8,7 @@ import { UrlController } from './controllers/url.controller';
 import { CreateUrlShortenerService } from 'src/application/services/url/create-url-shortener.service';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { RedirectToOriginalUrlService } from 'src/application/services/url/redirect-to-original-url.service';
+import { GetListUrlsService } from 'src/application/services/url/get-list-urls.service';
 
 
 @Module({
@@ -23,6 +24,7 @@ import { RedirectToOriginalUrlService } from 'src/application/services/url/redir
     AuthenticateUserService,
     CreateUrlShortenerService,
     RedirectToOriginalUrlService,
+    GetListUrlsService,
     LoggerMiddleware
   ],
 })

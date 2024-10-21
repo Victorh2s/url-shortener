@@ -54,4 +54,15 @@ export abstract class UrlRepository {
         deletedAt: Date | null;
         userId: string | null;
     }>
+
+    abstract findManyUrls(userId: string): Promise<{
+        originalUrl: string;
+        shortenedUrl: string;
+        id: string;
+        clickCount: number;
+        createdAt: Date;
+        updatedAt: Date;
+        deletedAt: Date | null;
+        userId: string | null;
+    }[]>
 }

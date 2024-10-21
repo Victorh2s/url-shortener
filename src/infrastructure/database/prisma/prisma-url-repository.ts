@@ -54,4 +54,15 @@ export class PrismaUrlRepository implements UrlRepository {
 
         return url
     }
+
+    async findManyUrls(userId: string){
+
+        return await this.prisma.url.findMany({
+            where:{
+                userId,
+                deletedAt: null,
+            },
+        })
+
+    }
 }
