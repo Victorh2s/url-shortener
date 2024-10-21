@@ -4,13 +4,15 @@ import { CreateUrlShortenerService } from 'src/application/services/url/create-u
 import { UrlShortenerDto } from '../dtos/url/url-shortener.dto';
 import { RedirectToOriginalUrlService } from 'src/application/services/url/redirect-to-original-url.service';
 import { GetListUrlsService } from 'src/application/services/url/get-list-urls.service';
+import { UpdateUrlService } from 'src/application/services/url/update-url.service';
 
 @Controller('url')
 export class UrlController {
     constructor(
         private readonly createUrlShortenerService: CreateUrlShortenerService,
         private readonly redirectToOriginalUrlService: RedirectToOriginalUrlService,
-        private readonly getListUrlsService: GetListUrlsService
+        private readonly getListUrlsService: GetListUrlsService,
+        private readonly updateUrlService: UpdateUrlService
 
     ) {}
 
@@ -51,6 +53,23 @@ export class UrlController {
 
         return list
         
+    }
+
+    @Put('update/:shortenedUrl')
+    async updateUrl(@Param('shortenedUrl') shortenedUrl: string, @Req() req: Request, @Body() body: UrlShortenerDto ) {
+
+        if (!req['authUser']) {
+            throw new HttpException('Acesso negado.', HttpStatus.UNAUTHORIZED);
+        }
+
+        const authUser = req.authUser
+        const userId = authUser.id
+
+        const { originalUrl } = body
+
+        const updated = await this.updateUrlService.execute({userId, shortenedUrl, originalUrl})
+
+        return updated
     }
 
    

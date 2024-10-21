@@ -9,6 +9,7 @@ import { CreateUrlShortenerService } from 'src/application/services/url/create-u
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { RedirectToOriginalUrlService } from 'src/application/services/url/redirect-to-original-url.service';
 import { GetListUrlsService } from 'src/application/services/url/get-list-urls.service';
+import { UpdateUrlService } from 'src/application/services/url/update-url.service';
 
 
 @Module({
@@ -25,6 +26,7 @@ import { GetListUrlsService } from 'src/application/services/url/get-list-urls.s
     CreateUrlShortenerService,
     RedirectToOriginalUrlService,
     GetListUrlsService,
+    UpdateUrlService,
     LoggerMiddleware
   ],
 })

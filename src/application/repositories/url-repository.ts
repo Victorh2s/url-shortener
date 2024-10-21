@@ -65,4 +65,6 @@ export abstract class UrlRepository {
         deletedAt: Date | null;
         userId: string | null;
     }[]>
+
+    abstract updateUrl({ userId, shortenedUrl, originalUrl }: IUpdateUrl): Promise<void>
 }
