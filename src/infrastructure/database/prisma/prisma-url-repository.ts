@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PrismaService } from "./prisma.service";
-import { ICreateUrlShortener, IDeleteUrl, IUpdateUrl, UrlRepository } from 'src/application/repositories/url-repository';
+import { ICreateUrlShortener, IDeleteUrl, IUpdateUrl, UrlRepository } from '@/application/repositories/url-repository';
 
 @Injectable()
 export class PrismaUrlRepository implements UrlRepository {

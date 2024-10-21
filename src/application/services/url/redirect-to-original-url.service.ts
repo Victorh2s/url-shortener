@@ -1,5 +1,5 @@
+import { UrlRepository } from '@/application/repositories/url-repository';
 import { Injectable } from '@nestjs/common';
-import { UrlRepository } from '../../repositories/url-repository';
 
 @Injectable()
 export class RedirectToOriginalUrlService {

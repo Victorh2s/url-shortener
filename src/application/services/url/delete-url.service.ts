@@ -1,5 +1,5 @@
+import { IDeleteUrl, UrlRepository } from '@/application/repositories/url-repository';
 import { Injectable } from '@nestjs/common';
-import { IDeleteUrl, UrlRepository } from '../../repositories/url-repository';
 
 @Injectable()
 export class DeleteUrlService {

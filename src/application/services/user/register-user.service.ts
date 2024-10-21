@@ -1,6 +1,6 @@
+import { IRegisterUser, UserRepository } from '@/application/repositories/user-repository';
 import { Injectable } from '@nestjs/common';
 import { hash } from 'bcrypt';
-import { IRegisterUser, UserRepository } from 'src/application/repositories/user-repository';
 
 @Injectable()
 export class RegisterUserService {

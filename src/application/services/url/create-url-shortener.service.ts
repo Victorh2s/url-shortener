@@ -1,5 +1,5 @@
+import { IUrlShortener, UrlRepository } from '@/application/repositories/url-repository';
 import { Injectable } from '@nestjs/common';
-import { IUrlShortener, UrlRepository } from '../../repositories/url-repository';
 import { randomBytes } from 'crypto';
 
 

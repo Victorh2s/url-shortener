@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PrismaService } from "./prisma.service";
-import { IRegisterUser, UserRepository } from 'src/application/repositories/user-repository';
+import { IRegisterUser, UserRepository } from '@/application/repositories/user-repository';
 
 @Injectable()
 export class PrismaUserRepository implements UserRepository {

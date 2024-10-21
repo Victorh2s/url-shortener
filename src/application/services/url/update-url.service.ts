@@ -1,5 +1,5 @@
+import { IUpdateUrl, UrlRepository } from '@/application/repositories/url-repository';
 import { Injectable } from '@nestjs/common';
-import { IUpdateUrl, UrlRepository } from '../../repositories/url-repository';
 
 
 @Injectable()
