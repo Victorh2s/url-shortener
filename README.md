@@ -114,7 +114,10 @@ $ npm run test:cov
     - Implementar balanceamento de carga utilizando NGINX ou outro software para distribuir requisições entre múltiplos servidores, evitando sobrecarga em qualquer servidor individual e melhorando a performance da aplicação.
 
 ## Deploy
-  
+  Deploy realizado na Amazon ec2
+
+  - [Clique aqui](http://3.85.14.135:3000/api) para acessar a documentação feita com Swagger em produção.
+  - Caso tenha interesse em acessar a instância da aplicação, [clique aqui](https://drive.google.com/drive/folders/1dOR8mACp3yQ336vSoAjhEwZSihR7S6uM?usp=drive_link) e baixe a chave SSH.
 
 ## License
 
