@@ -14,7 +14,9 @@
   </a>
 </p>
 
-# URL Shortener - Projeto de Seleção para Desenvolvedor Back End (Teddy Open Finance)
+# URL Shortener - Processo seletivo (Etapa 2)
+
+## Desenvolvedor Back End (Teddy Open Finance)
 
 Este projeto é uma API REST desenvolvida com [NestJS](https://github.com/nestjs/nest) e tem como objetivo proporcionar uma solução eficiente para o encurtamento de URLs, atendendo tanto usuários autenticados quanto anônimos.
 
@@ -24,7 +26,7 @@ Este projeto é uma API REST desenvolvida com [NestJS](https://github.com/nestjs
 - **Encurtamento de URLs**: Permite encurtar URLs para um formato de no máximo 6 caracteres.
   - Exemplo:
     - **Entrada**: `https://teddy360.com.br/material/marco-legal-das-garantias-sancionado-entenda-o-que-muda/`
-    - **Saída**: `http://localhost/aZbKq7`
+    - **Saída**:   `http://localhost:3000/url/r/aO1vU`
 - **Gerenciamento de URLs**:
   - Usuários autenticados podem listar, editar e excluir suas URLs encurtadas.
   - Contabilização de cliques em cada URL encurtada.

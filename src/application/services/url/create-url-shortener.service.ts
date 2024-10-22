@@ -18,9 +18,10 @@ export class CreateUrlShortenerService {
             shortenedUrl,
             userId
         })
-
+    
+       
         return {
-            shortenedUrl: `http://localhost:3000/url/r/${newShortenedUrl.shortenedUrl}`
+          shortenedUrl: `${process.env.BASE_URL}/url/r/${newShortenedUrl.shortenedUrl}`
         }
     }
 

@@ -6,6 +6,7 @@ describe('Create Url Shortener Service', () => {
   let createUrlShortenerService: CreateUrlShortenerService;
 
   beforeEach(() => {
+     process.env.BASE_URL = 'http://localhost:3000'
     inMemoryUrlRepository = new InMemoryUrlRepository();
     createUrlShortenerService = new CreateUrlShortenerService(inMemoryUrlRepository);
   });
