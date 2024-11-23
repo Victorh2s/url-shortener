@@ -14,9 +14,9 @@
   </a>
 </p>
 
-# URL Shortener - Processo seletivo (Etapa 2)
+# URL Shortener 
 
-## Desenvolvedor Back End (Teddy Open Finance)
+## Sobre
 
 Este projeto é uma API REST desenvolvida com [NestJS](https://github.com/nestjs/nest) e tem como objetivo proporcionar uma solução eficiente para o encurtamento de URLs, atendendo tanto usuários autenticados quanto anônimos.
 
@@ -117,7 +117,6 @@ $ npm run test:cov
   Deploy realizado na Amazon ec2
 
   - [Clique aqui](http://3.85.14.135:3000/api) para acessar a documentação feita com Swagger em produção.
-  - Caso tenha interesse em acessar a instância da aplicação, [clique aqui](https://drive.google.com/drive/folders/1dOR8mACp3yQ336vSoAjhEwZSihR7S6uM?usp=drive_link) e baixe a chave SSH.
 
 ## License
 
